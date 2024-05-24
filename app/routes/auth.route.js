@@ -14,20 +14,12 @@
 //  limitations under the License.
 // ============================================================================
 
-const serverless = require('serverless-http')
-const express = require('express')
-const app = express()
-const cors = require('cors');
-const bodyParser = require('body-parser')
-const { db } = require('./app/config/db.config')
+const controller = require("../controllers/auth.controller");
+const router = require("express").Router();
 
-require('dotenv').config()
+module.exports = app => {
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
-app.use(cors("*"));
+  router.get("/login", controller.login); 
 
-require('./app/routes/auth.route')(app)
-require('./app/routes/commons.route')(app)
-
-module.exports.handler = serverless(app)
+  app.use('/auth', router); 
+};

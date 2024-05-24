@@ -14,20 +14,19 @@
 //  limitations under the License.
 // ============================================================================
 
-const serverless = require('serverless-http')
-const express = require('express')
-const app = express()
-const cors = require('cors');
-const bodyParser = require('body-parser')
-const { db } = require('./app/config/db.config')
+const service = require('../service/auth.js')
 
-require('dotenv').config()
+exports.login = async (req, res) => {
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
-app.use(cors("*"));
-
-require('./app/routes/auth.route')(app)
-require('./app/routes/commons.route')(app)
-
-module.exports.handler = serverless(app)
+  try {
+    const token = await service.login('scott', 'password')
+    res.status(200).json({
+      token: token
+    })  
+  }
+  catch (error) {
+    res.status(500).json({
+      error: error
+    })  
+  }
+}

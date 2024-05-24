@@ -28,6 +28,9 @@ provider:
   region: us-west-2
   environment:
     VERSION: ${self:custom.VERSION.${self:provider.stage}}
+    MRS_URL: ${self:custom.MRS_URL.${self:provider.stage}}
+    SERVICE: ${self:custom.SERVICE.${self:provider.stage}}
+    NODE_TLS_REJECT_UNAUTHORIZED: ${self:custom.NODE_TLS_REJECT_UNAUTHORIZED.${self:provider.stage}}
 
 # aws ssm put-parameter --name my-secret-string --value TOPsecretData --type String --overwrite
 # aws ssm get-parameter --name my-secret-string
@@ -41,6 +44,18 @@ custom:
     local: 0.0.1
     dev: 0.0.1
     prod: 0.0.1
+  MRS_URL:
+    local: https://127.0.0.1:8444
+    dev: https://127.0.0.1:8444
+    prod: https://127.0.0.1:8444
+  SERVICE:
+    local: myService
+    dev: myService
+    prod: myService
+  NODE_TLS_REJECT_UNAUTHORIZED:
+    local: 0
+    dev: 0
+    prod: 0
 
 functions:
   app:
