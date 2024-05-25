@@ -25,6 +25,7 @@ exports.login = async (username, password) => {
     user: username, 
     nonce: nonce
   }
+
   const userResp = await fetch(url, {
       method: 'POST',
       body: JSON.stringify(userBody)
@@ -35,25 +36,22 @@ exports.login = async (username, password) => {
   const b64Salt = Buffer.from(salt).toString('base64')
   const iterations = userData.iterations
   const session = userData.session
-
-  console.log(session)
-
   const clientFirst = `n=${username},r=${nonce}`
-  const serverFirst = `r=${nonce},s=${b64Salt},i=${String(iterations)}`;
-  const clientFinal = `r=${nonce}`
+  const clientFinal = `r=${userData.nonce}`
+  const serverFirst = `r=${userData.nonce},s=${b64Salt},i=${String(iterations)}`;
 
-  const clientProof = await calculateClientProof(
+  const clientProof = Array.from(await calculateClientProof(
     password, 
     salt, 
     iterations, 
     clientFirst,
     serverFirst,
-    clientFinal)
+    clientFinal))
 
   const tokenUrl = `${url}&sessionType=bearer&session=${session}`
   const sessionBody = {
     clientProof: clientProof,
-    nonce: nonce,
+    nonce: userData.nonce,
     state: "response"
   }
 
@@ -61,14 +59,7 @@ exports.login = async (username, password) => {
       method: 'POST',
       body: JSON.stringify(sessionBody)
   })
-
-  const passData = await passResp.json()
-
-  console.log(passData)
-
-
-
-  return passData.access_token
+  return await passResp.json()
 }
 
 calculateClientProof = async (
@@ -83,7 +74,7 @@ calculateClientProof = async (
   const authMessage = `${clientFirst},${serverFirst},${clientFinal}`;
   const encodedAuthMessage = te.encode(authMessage)
   const saltedPassword = await calculatePbkdf2(te.encode(password), salt, iterations)
-  const clientKey = await calculateHmac(saltedPassword, te.encode("Client Key"))
+  const clientKey = await calculateHmac(saltedPassword, te.encode('Client Key'))
   const storedKey = await calculateSha256(clientKey)
   const clientSignature = await calculateHmac(storedKey, encodedAuthMessage);
   const clientProof = calculateXor(clientSignature, clientKey);

@@ -20,9 +20,7 @@ exports.login = async (req, res) => {
 
   try {
     const token = await service.login('scott', 'password')
-    res.status(200).json({
-      token: token
-    })  
+    res.status(200).json(token)  
   }
   catch (error) {
     res.status(500).json({
