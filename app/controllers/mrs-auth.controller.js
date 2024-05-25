@@ -18,8 +18,9 @@ const service = require('../service/mrs-auth.js')
 
 exports.login = async (req, res) => {
 
+  const { username, password } = req.body 
   try {
-    const token = await service.login('scott', 'password')
+    const token = await service.login(username, password)
     res.status(200).json(token)  
   }
   catch (error) {
