@@ -43,16 +43,16 @@ Next, create a User within the authentication app:
 1. Right-Click on the "MRS (MRS)" authentication item that was created in the previous step.
 2. Add a User
 
-Once the "/myService" and user is setup, a token can be obtain using the following curl command:
+Once the "/myService" and user is setup, a token can be obtained using the following curl command:
 
 `curl --location 'http://localhost:3000/local/mrs-auth/login' --header 'Content-Type: application/json' --data '{ "username": "scott", "password": "password" }'`
 
-The following is returned:
+The following is returned...
 
 `{ "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMTFlZjE1ZjIxMjEyYzU4NWI1ZmEwMGZmYWY0YmYwMjQiLCJleHAiOiIyMDI0LTA1LTI1IDE2OjQ4OjMyIiwic2VydmljZV9pZCI6Ilx1MDAxMe9cdTAwMTXwW9eqV7X6XHUwMDAw_69L8CQifQ.oDGFv88Av2Y1zGysY92EnjWxKmXvIh--JpWh-O_ND4o" }`
 
 ### Postman
-This project has a "postman" subdirectory that contains an export of the featherweight_auth and myService APIs. Note that after clicking on the mrs_example folder, the "Authorization" and "Variables" tab are popluated with example entries. Update the values to miror your environment:
+This project has a "postman" subdirectory that contains an export of the featherweight_auth and myService APIs. Note that after clicking on the mrs_example folder, the "Authorization" and "Variables" tab are populated with example entries. Update the values to mirror your environment:
 
 Select the "Authorization" tab and enter your username/password, url, etc...
 Select the "Variables" tab and enter your url, service, and schema accordingly.
