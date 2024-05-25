@@ -1,0 +1,249 @@
+{
+	"info": {
+		"_postman_id": "753806b6-6927-4a10-9f08-4d3cdd00e4e4",
+		"name": "mrs_example",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18592071",
+		"_collection_link": "https://unitedbins.postman.co/workspace/canology-order~bfcee30b-abd0-41d4-8d15-3107abf4cd6e/collection/18592071-753806b6-6927-4a10-9f08-4d3cdd00e4e4?action=share&source=collection_link&creator=18592071"
+	},
+	"item": [
+		{
+			"name": "mrsNotes",
+			"item": [
+				{
+					"name": "note",
+					"item": [
+						{
+							"name": "notesAll",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Bearer",
+										"value": "",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{url}}/{{service}}/{{schema}}/notesAll?f=!content",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{service}}",
+										"{{schema}}",
+										"notesAll"
+									],
+									"query": [
+										{
+											"key": "f",
+											"value": "!content"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "user",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/{{service}}/{{schema}}/user?limit=1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{service}}",
+										"{{schema}}",
+										"user"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "schema",
+					"item": [
+						{
+							"name": "metadata-catalog",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/{{service}}/{{schema}}/metadata-catalog/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{service}}",
+										"{{schema}}",
+										"metadata-catalog",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "metadata-catalog/user",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/{{service}}/{{schema}}/metadata-catalog/user",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{service}}",
+										"{{schema}}",
+										"metadata-catalog",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "metadata-catalog/note",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/{{service}}/{{schema}}/metadata-catalog/note",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{service}}",
+										"{{schema}}",
+										"metadata-catalog",
+										"note"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "metadata-catalog/userHasNote",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/{{service}}/{{schema}}/metadata-catalog/userHasNote",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{service}}",
+										"{{schema}}",
+										"metadata-catalog",
+										"userHasNote"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "MRS Token",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "http://localhost:3000/local/mrs-auth/login",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "password",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "scott",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "password_credentials",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://localhost:8444",
+			"type": "string"
+		},
+		{
+			"key": "service",
+			"value": "myService",
+			"type": "string"
+		},
+		{
+			"key": "schema",
+			"value": "mrsNotes",
+			"type": "string"
+		}
+	]
+}
