@@ -19,7 +19,7 @@ const router = require("express").Router()
 
 module.exports = app => {
 
-  router.get("/login", controller.login)
+  router.post("/login", controller.login)
 
   app.use('/mrs-auth', router)
 }

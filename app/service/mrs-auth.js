@@ -58,7 +58,10 @@ exports.login = async (username, password) => {
       method: 'POST',
       body: JSON.stringify(sessionBody)
   })
-  return await passResp.json()
+  const token = await passResp.json()
+  return {
+    access_token: token.accessToken
+  }
 }
 
 hex = (arrayBuffer) => {
