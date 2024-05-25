@@ -14,12 +14,12 @@
 //  limitations under the License.
 // ============================================================================
 
-const controller = require("../controllers/auth.controller");
+const controller = require("../controllers/mrs-auth.controller");
 const router = require("express").Router();
 
 module.exports = app => {
 
   router.get("/login", controller.login); 
 
-  app.use('/auth', router); 
+  app.use('/mrs-auth', router); 
 };

@@ -27,7 +27,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 app.use(cors("*"));
 
-require('./app/routes/auth.route')(app)
+require('./app/routes/mrs-auth.route')(app)
 require('./app/routes/commons.route')(app)
 
 module.exports.handler = serverless(app)
