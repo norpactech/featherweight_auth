@@ -20,7 +20,7 @@ For use in the cloud, refer to the [Serverless Framework](https://www.serverless
 
 `sls deploy --stage dev`
 
-As shown, this will run the software into the 'dev' environment in AWS. A 'prod' configuration is also available in the project's serverless.yml file.
+As shown, this will run the software in the 'dev' Lambda environment in AWS. A 'prod' configuration is also available in the project's serverless.yml file.
 
 The Serverless Framework is designed to be cloud-agnostic. Refer to the [Serverless Framework](https://www.serverless.com/framework) for use in other cloud platforms.
 
@@ -29,9 +29,9 @@ The starting point for the featherweight_login was the blog [Introducing the MyS
 
 If you're using a Windows machine, ensure you run all scripts using Powershell, as the DOS command line won't work.
 
-There is an example Progressive Web App (PWA) that accompanies MySQL Shell for VS Code. The auth/crypto portion in this software was reversed-engineered from the PWA to provide the capability to obtain a token.
+There is an example Progressive Web App (PWA) that accompanies MySQL Shell for VS Code. The auth/crypto portion in this software was reversed-engineered from the PWA to provide the capability to obtain a token from the MRS authentication app.
 
-MRS also supports popular OAuth2 services, but to keep things simple, the MySQL 'MRS' authentication is used.
+MRS also supports popular OAuth2 services, but to keep things simple, the MySQL 'MRS' authentication app is used.
 
 First, create an "Authentication App" that's tied to the service:
 
