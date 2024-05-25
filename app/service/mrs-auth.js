@@ -14,12 +14,11 @@
 //  limitations under the License.
 // ============================================================================
 
-const crypto = require("crypto");
+const crypto = require("crypto")
+const url = `${process.env.MRS_URL}/${process.env.SERVICE}/authentication/login?app=MRS`
 
 exports.login = async (username, password) => {
  
-  const url = `${process.env.MRS_URL}/${process.env.SERVICE}/authentication/login?app=MRS`
-
   const nonce = hex(crypto.getRandomValues(new Uint8Array(10)))
   const userBody = {
     user: username, 
@@ -62,6 +61,14 @@ exports.login = async (username, password) => {
   return await passResp.json()
 }
 
+hex = (arrayBuffer) => {
+
+  let retVal = Array.from(new Uint8Array(arrayBuffer))
+      .map((n) => { return n.toString(16).padStart(2, "0"); })
+      .join("");
+  return retVal
+}
+
 calculateClientProof = async (
   password, 
   salt, 
@@ -93,7 +100,7 @@ calculatePbkdf2 = async (password, salt, iterations) => {
     }, ck1, 256))
 
   return result
-};
+}
 
 calculateHmac = async (secret, data) => {
 
@@ -130,13 +137,4 @@ calculateXor = (a1, a2) => {
 
   return amax;
 }
-
-hex = (arrayBuffer) => {
-
-  let retVal = Array.from(new Uint8Array(arrayBuffer))
-      .map((n) => { return n.toString(16).padStart(2, "0"); })
-      .join("");
-  return retVal
-}
-
 

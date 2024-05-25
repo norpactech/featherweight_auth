@@ -14,7 +14,7 @@
 //  limitations under the License.
 // ============================================================================
 
-const service = require('../service/auth.js')
+const service = require('../service/mrs-auth.js')
 
 exports.login = async (req, res) => {
 
