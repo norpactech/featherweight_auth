@@ -2,7 +2,7 @@
 Login and obtain a token for use with the MySQL REST API Service (MRS)
 
 ### About the Featherweight Framework Project (FFP)
-The purpose of the Featherweight Framework Project is to develop a methodology that exploits the capabilities of the MySQL Rest API Services (MRS). The strategy is to minimize middleware API services and move CRUD and transactional logic to the database using stored procedures and views. The goal is to create a highly performant backend whose access to data and services are controlled and centralized through Database Developers and Administrators.
+The purpose of the Featherweight Framework Project is to develop a methodology that exploits the capabilities of the MySQL Rest API Services (MRS). The strategy is to minimize middleware API services and move CRUD (repository) and services (business logic) to the database using stored procedures and views. The goal is to create a highly performant backend whose access to data and services are controlled and centralized through Database Developers and Administrators.
 
 ### About Northern Pacific Technologies, LLC (NorPacTech)
 NorPacTech is a small company that primarily utilizes AWS, the Spring Framework, MySQL for its development stack. The Featherweight Framework will be the next generation platform. As of this writing, the framework is in its infancy, but to learn more, please reach out to [Scott Klakken](scott@northernpacific.tech).
