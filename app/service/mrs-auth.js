@@ -37,7 +37,7 @@ exports.login = async (username, password) => {
   const session = userData.session
   const clientFirst = `n=${username},r=${nonce}`
   const clientFinal = `r=${userData.nonce}`
-  const serverFirst = `r=${userData.nonce},s=${b64Salt},i=${String(iterations)}`;
+  const serverFirst = `r=${userData.nonce},s=${b64Salt},i=${String(iterations)}`
 
   const clientProof = Array.from(await calculateClientProof(
     password, 
@@ -64,8 +64,8 @@ exports.login = async (username, password) => {
 hex = (arrayBuffer) => {
 
   let retVal = Array.from(new Uint8Array(arrayBuffer))
-      .map((n) => { return n.toString(16).padStart(2, "0"); })
-      .join("");
+      .map((n) => { return n.toString(16).padStart(2, "0") })
+      .join("")
   return retVal
 }
 
@@ -77,15 +77,15 @@ calculateClientProof = async (
   serverFirst,
   clientFinal) => {
 
-  const te = new TextEncoder();
-  const authMessage = `${clientFirst},${serverFirst},${clientFinal}`;
+  const te = new TextEncoder()
+  const authMessage = `${clientFirst},${serverFirst},${clientFinal}`
   const encodedAuthMessage = te.encode(authMessage)
   const saltedPassword = await calculatePbkdf2(te.encode(password), salt, iterations)
   const clientKey = await calculateHmac(saltedPassword, te.encode('Client Key'))
   const storedKey = await calculateSha256(clientKey)
-  const clientSignature = await calculateHmac(storedKey, encodedAuthMessage);
-  const clientProof = calculateXor(clientSignature, clientKey);
-  return clientProof;
+  const clientSignature = await calculateHmac(storedKey, encodedAuthMessage)
+  const clientProof = calculateXor(clientSignature, clientKey)
+  return clientProof
 }
 
 calculatePbkdf2 = async (password, salt, iterations) => {
@@ -114,27 +114,27 @@ calculateSha256 = async (data) => {
 }
 
 calculateXor = (a1, a2) => {
-  const l1 = a1.length;
-  const l2 = a2.length;
+  const l1 = a1.length
+  const l2 = a2.length
   // cSpell:ignore amax
-  let amax;
-  let amin;
-  let loop;
+  let amax
+  let amin
+  let loop
 
   if (l1 > l2) {
-      amax = new Uint8Array(a1);
-      amin = a2;
-      loop = l2;
+      amax = new Uint8Array(a1)
+      amin = a2
+      loop = l2
   } else {
-      amax = new Uint8Array(a2);
-      amin = a1;
-      loop = l1;
+      amax = new Uint8Array(a2)
+      amin = a1
+      loop = l1
   }
 
   for (let i = 0; i < loop; ++i) {
-      amax[i] ^= amin[i];
+      amax[i] ^= amin[i]
   }
 
-  return amax;
+  return amax
 }
 

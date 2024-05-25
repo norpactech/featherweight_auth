@@ -14,13 +14,13 @@
 //  limitations under the License.
 // ============================================================================
 
-const controller = require("../controllers/commons.controller");
-const router = require("express").Router();
+const controller = require("../controllers/commons.controller")
+const router = require("express").Router()
 
 module.exports = app => {
 
-  router.get("/about", controller.about); 
-  router.get("/health", controller.health);
+  router.get("/about", controller.about)
+  router.get("/health", controller.health)
 
-  app.use('/', router); 
-};
+  app.use('/', router)
+}
