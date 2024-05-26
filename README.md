@@ -1,4 +1,4 @@
-## featherweight_login
+## featherweight_auth
 Login and obtain a token for use with the MySQL REST API Service (MRS)
 
 ### About the Featherweight Framework Project (FFP)
