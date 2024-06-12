@@ -49,9 +49,9 @@ custom:
     dev: https://127.0.0.1:8444
     prod: https://127.0.0.1:8444
   SERVICE:
-    local: myService
-    dev: myService
-    prod: myService
+    local: unitedbins
+    dev: unitedbins
+    prod: unitedbins
   NODE_TLS_REJECT_UNAUTHORIZED:
     local: 0
     dev: 0

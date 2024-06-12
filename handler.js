@@ -19,7 +19,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors');
 const bodyParser = require('body-parser')
-const { db } = require('./app/config/db.config')
+// const { db } = require('./app/config/db.config')
 
 require('dotenv').config()
 
